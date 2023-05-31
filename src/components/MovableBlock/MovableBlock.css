@@ -1,10 +1,6 @@
 .movableBlock {
-  width: 200px;
-  height: 200px;
-  background-color: #f1f1f1;
-  position: absolute;
+  display: inline-block;
   z-index: 10;
-  top: 0;
-  left: 0;
   cursor: move;
+  position: absolute;
 }

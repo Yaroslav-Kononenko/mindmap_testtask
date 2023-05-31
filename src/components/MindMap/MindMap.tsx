@@ -1,42 +1,79 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './MindMap.scss';
 
 interface Node {
   id: string;
-  text: string;
+  text?: string;
   children: Node[];
 }
 
-interface MindMapProps {
-  data: Node;
-}
-
-const MindMap: React.FC<MindMapProps> = ({ data }) => {
-  const [expandedNodes, setExpandedNodes] = useState<string[]>([]);
-
-  const toggleNode = (id: string) => {
-    if (expandedNodes.includes(id)) {
-      setExpandedNodes(expandedNodes.filter(nodeId => nodeId !== id));
-    } else {
-      setExpandedNodes([...expandedNodes, id]);
-    }
-  };
-
-  const renderNode = (node: Node) => {
-    const isExpanded = expandedNodes.includes(node.id);
-
-    return (
-      <div key={node.id}>
-        <div onClick={() => toggleNode(node.id)}>
-          {node.text}
-        </div>
-        {isExpanded && node.children.map(renderNode)}
-      </div>
-    );
-  };
-
+const MindMap: React.FC = () => {
   return (
-    <div>
-      {renderNode(data)}
+    <div className='mindThree'>
+      <NodeThree data={data} />
+    </div>
+  );
+};
+
+export const data: Node = {
+  id: '1',
+  text: 'Categories',
+  children: [
+    {
+      id: '2',
+      text: 'Node 1',
+      children: [
+        {
+          id: '3',
+          text: 'Node 1.1',
+          children: []
+        },
+        {
+          id: '4',
+          text: 'Node 1.2',
+          children: []
+        },
+        {
+          id: '6',
+          text: 'Node 2',
+          children: [
+            {
+              id: '7',
+              text: 'Node 2',
+              children: []
+            },
+            {
+              id: '8',
+              text: 'Node 2',
+              children: []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: '5',
+      text: 'Node 2',
+      children: []
+    }
+  ]
+};
+
+type NodeProps = {
+  data: any;
+};
+
+const NodeThree: React.FC<NodeProps> = ({ data }) => {
+  return (
+    <div className="node">
+      <div className="node__text">{data.text}</div>
+      {data.children && (
+        <div className="children">
+          {data.children.map((child: any) => (
+            <NodeThree key={child.id} data={child} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

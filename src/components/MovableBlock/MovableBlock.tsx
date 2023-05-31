@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import MindMap from '../MindMap/MindMap';
-import { data } from '../data';
 import './MovableBlock.css';
 
 const MovableBlock: React.FC = () => {
@@ -35,7 +34,7 @@ const MovableBlock: React.FC = () => {
       onMouseUp={stopDragging}
       onMouseMove={dragBlock}
     >
-      <MindMap data={data} />
+      <MindMap />
     </div>
   );
 };

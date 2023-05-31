@@ -1,35 +1,23 @@
+import React, { useState } from 'react';
 import './App.scss';
-import MovableBlock from './components/MovableBlock/MovableBlock';
+import { Header } from './components/Header/Header';
+import { MovesButton } from './components/MovesButton/MovesButton';
+import MovableBlock  from './components/MovableBlock/MovableBlock';
 
-function App() {
+const App: React.FC = () => {
+  const [ scale, setScale ] = useState<number>(100);
+
+  const positions = ['top', 'right', 'bottom', 'left'];
+
   return (
     <div className="app">
-      <header className="header">
-        <div className="brand">
-          <h2 className="brand__name">Services</h2>
-          <div className="brand__logo"></div>
-        </div>
-
-        <div className="nav">
-          <div className="nav__itemlist">
-            List view
-          </div>
-
-          <div className="nav__switcher">
-            <button>
-              <img src="" alt="" />
-            </button>
-          </div>
-
-          <div className="nav__scale-bar">
-            <button className="scale-button">+</button>
-            <div className="scale-data"></div>
-            <button className="scale-button">-</button>
-          </div>
-        </div>
-      </header>
+      <Header scale={scale} setScale={setScale} />
       <main className="main">
         <MovableBlock />
+        {positions.map((position: string) => 
+            <MovesButton position={position} key={position} />
+          )
+        }
       </main>
     </div>
   );

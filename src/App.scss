@@ -3,55 +3,9 @@
   background: #F6F7FC;
 }
 
-.header {
-  height: 100px;
-  position: relative;
-  z-index: 50;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5%;
-  background: #F6F7FC;
-  transition: 0.5s;
-
-  &:hover {
-    -webkit-box-shadow: 0px 2px 22px 0px rgba(204,204,204,1);
-    -moz-box-shadow: 0px 2px 22px 0px rgba(204,204,204,1);
-    box-shadow: 0px 2px 22px 0px rgba(204,204,204,1);
-  }
-}
-
-.brand {
-  &__name {
-    text: normal 20px;
-    color: #22262C;
-  }
-}
-
 .main {
   position: relative;
+  height: calc(100vh - 100px);
+  cursor: move;
+  overflow: hidden;
 }
-
-.nav {
-  display: flex;
-  gap: 10px;
-
-  &__itemlist {
-    text-transform: uppercase;
-    color: white;
-    text-weight: 600;
-    padding: 10px;
-    background: #6E76DE;
-  }
-
-  &__switcher {
-    width: 40px;
-  }
-
-  
-}
-
-.nav__scale-bar {
-  display: flex;
-}
-
